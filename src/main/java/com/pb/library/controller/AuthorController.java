@@ -45,7 +45,7 @@ public class AuthorController {
     }
 
     @GetMapping("/delete")
-    public String deleteAuthor(@RequestParam int id) {
+    public String deleteAuthor(@RequestParam("authorId") int id) {
         authorService.deleteById(id);
         return "redirect:/authors/list";
     }

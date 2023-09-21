@@ -1,7 +1,6 @@
 package com.pb.library.service;
 
-import com.pb.library.dao.AuthorRepository;
-import com.pb.library.entity.Author;
+import com.pb.library.dao.BookRepository;
 import com.pb.library.entity.Book;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,23 +10,23 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AuthorServiceImpl implements AuthorService{
+public class BookServiceImpl implements BookService{
 
-    private AuthorRepository authorRepository;
+    private BookRepository bookRepository;
 
     @Autowired
-    public AuthorServiceImpl(AuthorRepository authorRepository) {
-        this.authorRepository = authorRepository;
+    public BookServiceImpl(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
     }
 
     @Override
-    public List<Author> findAll() {
-        return authorRepository.findAll();
+    public List<Book> findAll() {
+        return bookRepository.findAll();
     }
 
     @Override
-    public Author findById(int id) {
-        Optional<Author> optional = authorRepository.findById(id);
+    public Book findById(int id) {
+        Optional<Book> optional = bookRepository.findById(id);
         if (optional.isPresent()) {
             return optional.get();
         }
@@ -35,12 +34,12 @@ public class AuthorServiceImpl implements AuthorService{
     }
 
     @Override
-    public void save(Author author) {
-        authorRepository.save(author);
+    public void save(Book book) {
+        bookRepository.save(book);
     }
 
     @Override
     public void deleteById(int id) {
-        authorRepository.deleteById(id);
+        bookRepository.deleteById(id);
     }
 }
