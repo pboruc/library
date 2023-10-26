@@ -22,7 +22,10 @@
 
         <input type="text" th:field="*{title}"
                class="form-control mb-4 w-25" placeholder="Title">
-
+        <br/>
+        <select class="form-select" aria-label="Default select example">
+            <option th:each="author : ${authors}" th:text="author.name}"></option>
+        </select>
         <button type="submit" class="btn btn-info col-2">Save</button>
     </form>
 

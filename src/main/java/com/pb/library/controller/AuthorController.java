@@ -3,9 +3,14 @@ package com.pb.library.controller;
 import com.pb.library.entity.Author;
 import com.pb.library.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.filter.HiddenHttpMethodFilter;
+
+import java.util.Arrays;
 
 @Controller
 @RequestMapping("/authors")
@@ -44,7 +49,7 @@ public class AuthorController {
         return "redirect:/authors/list";
     }
 
-    @GetMapping("/delete")
+    @DeleteMapping("/delete")
     public String deleteAuthor(@RequestParam("authorId") int id) {
         authorService.deleteById(id);
         return "redirect:/authors/list";
